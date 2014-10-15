@@ -1,0 +1,26 @@
+<?php
+
+function asu_gsa_enable() {
+  $theme = 'asu_webspark_bootstrap';
+  $viewnames = array(
+      'panopoly_database_search',
+    );
+    $views_status = variable_get('views_defaults', array());
+    foreach ($viewnames as $key => $viewname) {
+      $views_status[$viewname] = TRUE;
+    }
+    variable_set('views_defaults', $views_status);
+    if (function_exists('views_invalidate_cache')) {
+      views_invalidate_cache();
+    }
+  module_disable(array('panopoly_search','search'),FALSE);
+  variable_set('google_appliance_hostname','search.asu.edu');
+  variable_set('google_appliance_frontend','asu_frontend');
+  variable_set('google_appliance_search_title','ASU Search Results');
+
+  $gsa_search_delta = 'ga_block_search_form';
+  $gsa_search_bid = db_query("SELECT bid FROM {block} WHERE delta = :delta AND theme = :theme", array(':delta' => $gsa_search_delta, ':theme' => $theme))->fetchField();
+  db_query("UPDATE {block} SET status = :status WHERE bid = :bid AND theme = :theme", array(':status' => 1, ':bid' => $gsa_search_bid, ':theme' => $theme));
+  db_query("UPDATE {block} SET region = :region WHERE bid = :bid AND theme = :theme", array(':region' => 'header', ':bid' => $gsa_search_bid, ':theme' => $theme));
+}
+
