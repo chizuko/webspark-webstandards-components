@@ -100,14 +100,47 @@
 		return substr($string,$pos,$len);
 	}
 
-	
+	function asu_gsa_sort() {
+		$path = current_path();
+                $exp = explode("/",$path);
+                if (count($exp) > 2) {
+                        $sort = $exp[2];
+                }
+                else {
+                        $sort = "";
+                        $sort_type = "rel";
+                }
+                if (strpos($sort,'rel') !== false) {
+                        $sort_type = "rel";
+                }
+
+                if (strpos($sort,'date') !== false) {
+                        $sort_type = "date";
+                }
+		if ($sort_type == "rel") {
+			$heads = '<span class="selected-sort">Sort by Relevance</span>';
+		}
+		else {
+			$heads .= '<a class="sort-date" href="rel">Sort by Relevance</a>';
+		}
+		$heads .= ' | ';
+		if ($sort_type == "date") {
+			$heads .=  '<span class="selected-sort">Sort by Date</span>';
+		}
+		else {
+			$heads .= '<a class="sort-date" href="date">Sort by Date</a>';
+		}
+		$heads .= "</div></div>";
+		
+	 return $heads;
+	}	
 	function asu_gsa_collection($query,$sort) {
 		global $base_url;
 		$site_name =  variable_get('site_name', 'This Site');
 		variable_set('asu_gsa_search_type',"Collection");
 		$results = "";
 		$tabs = "";
-	        $collection = variable_get("original_collection");	
+	        $collection = variable_get("original_collection");
 		if ($query == "") {
 			$heads = drupal_get_form("asu_gsa_search_form");
 			return $heads;
@@ -115,7 +148,9 @@
 			$results = google_appliance_search_view($query,$sort);
 		if ($collection != "") 
 			{
-			$heads = '<div class="search-option"><a class="search-collection search-selected" href="'.$base_url.'/search/'.$query.'/'.$sort.'">'.$site_name.'</a><a class="search-global" href="'.$base_url.'/global/'.$query.'/'.$sort.'">All of ASU</a></div>';
+			$heads = '<div class="search-option"><h1 class="search-gsa">Search Results</h1><a class="search-collection search-selected" href="'.$base_url.'/search/'.$query.'/'.$sort.'">This Site</a><a class="search-global" href="'.$base_url.'/global/'.$query.'/'.$sort.'">All of ASU</a><div class="search-gsa-sort">';
+			$sort_links = asu_gsa_sort();
+			$heads .= $sort_links;
 			}
 			else {
 			$heads = "";
@@ -145,7 +180,9 @@
 		variable_set('google_appliance_collection',$collection);
 		
 		if ($collection != "") {
-			$heads = '<div class="search-option"><a class="search-collection" href="'.$base_url.'/search/'.$query.'/'.$sort.'">'.$site_name.'</a><a class="search-global search-selected" href="'.$base_url.'/global/'.$query.'/'.$sort.'">All of ASU</a></div>';
+			$heads = '<div class="search-option"><h1 class="search-gsa">Search Results</h1><a class="search-collection" href="'.$base_url.'/search/'.$query.'/'.$sort.'">This Site</a><a class="search-global search-selected" href="'.$base_url.'/global/'.$query.'/'.$sort.'">All of ASU</a><div class="search-gsa-sort">';
+			$sort_links = asu_gsa_sort();
+			$heads .= $sort_links;
 		}
 		else {
 			$heads = "";
