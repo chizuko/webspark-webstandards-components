@@ -31,10 +31,58 @@
 .search-option {
 	margin-bottom: 20px;
 	font-size: 20px;
+	padding-top: 30px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.search-option a {
+	border-bottom: none;
+	color: #2a2a2a;
+	font-weight: bolder;
+}
+#search-results-heading {
+	display: none;
 }
 .search-collection {
 	margin-right: 10px;
 }
+.search-selected:hover {
+	border-bottom: 4px solid #FFBF36 !important;
+}
+
 .search-selected, .search-selected:hover {
-	border-bottom: 5px solid #FFBF36;
+	border-bottom: 4px solid #990033 !important;
+	padding-bottom: 10px;
+}
+
+.search-gsa-sort {
+	float: right;
+	font-size: smaller;
+}
+
+.search-gsa-sort a {
+	border-bottom: 1px dotted #a30046;
+	color: #a30046;
+	padding-bottom: 5px;
+}
+.google-appliance-sort-headers {
+	display: none;
+}
+.pager li > a, .pager li > span {
+	border-radius: 0;
+	color: #a90044;
+}
+.item-list ul li {
+	margin: -3px;
+}
+
+.item-list .page li {
+	padding: 0;
+}
+.pager-current {
+	background-color: #a90044;
+	color: white;
+	font-weight: bold;
+	padding: 7px 14px !important;
+	border: 1px solid #dddddd;
 }
