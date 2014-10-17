@@ -20,14 +20,14 @@ function webspark_megamenu_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_admissions:<front>',
+      'identifier' => 'main-menu_home:<front>',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -50,
     'customized' => 1,
   );
 
