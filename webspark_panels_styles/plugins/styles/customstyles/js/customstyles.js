@@ -6,15 +6,12 @@
 (function ($, Drupal) {
 	Drupal.behaviors.customstyles = {
 		attach: function(context, settings) {
-		
-		/* Gray background colors on rows */
-		//$( ".js-lightgraybg" ).parents( ".container" ).removeClass( "container" ).addClass( "container-fluid" );
 		if(!$( ".js-lightgraybg" ).parents( "div" ).hasClass( "fullbgcolor" )) {
+			$('.js-lightgraybg').parents('.row').addClass('row-full');
 			$( ".js-lightgraybg" ).parents( ".row" ).addClass( "bg-lightgray" ).wrapInner("<div class='col-md-12 fullbgcolor'><div class='row'></div></div>");			
 		}
-
-		//$( ".js-darkgraybg" ).parents( ".container" ).removeClass( "container" ).addClass( "container-fluid" );
 		if(!$( ".js-darkgraybg" ).parents( "div" ).hasClass( "fullbgcolor" )) {
+			$('.js-darkgraybg').parents('.row').addClass('row-full');
 			$( ".js-darkgraybg" ).parents( ".row" ).addClass( "bg-darkgray" ).wrapInner("<div class='col-md-12 fullbgcolor'><div class='row'></div></div>");			
 		}
 		
