@@ -53,13 +53,13 @@ function theme_asu_spotlight_list_item(&$vars) {
                       '<h2>'.$vars['package']['item']['title'].'</h2>'.
                       '<p>'.$vars['package']['item']['description'].'</p>';
 
-  if($vars['package']['item']['actiontitle'] != NULL && $vars['package']['item']['actionlink']!= NULL ) {
+  if($vars['package']['item']['color']=='red') {
+    $color = 'primary';
+  } else {
+    $color = 'blue';
+  }
 
-    if($vars['package']['item']['color']=='red') {
-      $color = 'primary';
-    } else {
-      $color = 'blue';
-    }
+  if($vars['package']['item']['actiontitle'] != NULL && $vars['package']['item']['actionlink']!= NULL ) {
 
     $list_item .= '<a class="btn btn-'.$color.' btn-block" href="'.$vars['package']['item']['actionlink'].'">'
           .$vars['package']['item']['actiontitle'].'</a>';
