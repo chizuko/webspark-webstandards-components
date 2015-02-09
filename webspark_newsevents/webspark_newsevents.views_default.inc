@@ -187,14 +187,12 @@ function webspark_newsevents_views_default_views() {
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  
   // Get tid for Top Articles and use the tid - Chizuko
   $top_article_tid = key(taxonomy_get_term_by_name("Top Articles"));
   $handler->display->display_options['filters']['tid']['value'] = array(
     //74 => '74',
     $top_article_tid => $top_article_tid, 
-  );
-  
+  );  
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'asu_news';
 
@@ -239,14 +237,12 @@ function webspark_newsevents_views_default_views() {
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  
   // Get tid for Feature Articles and use the tid - Chizuko
   $feature_article_tid = key(taxonomy_get_term_by_name("Feature Articles"));
   $handler->display->display_options['filters']['tid']['value'] = array(
     //75 => '75',
     $feature_article_tid => $feature_article_tid, 
-  );
-    
+  );  
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'asu_news';
 

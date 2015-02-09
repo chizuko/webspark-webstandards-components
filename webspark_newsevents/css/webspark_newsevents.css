@@ -125,6 +125,7 @@
 /* Events page */
 .view-events-new .views-row {
   margin-bottom: 20px;
+  min-height: 250px;
 }
 
 /* Event node */
